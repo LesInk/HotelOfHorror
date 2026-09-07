@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Hotel of Horror</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game" class="machine" aria-label="Hotel of Horror game" tabindex="0">
+    <section id="title-screen" class="screen-panel" aria-labelledby="game-title">
+      <div class="title-rule" aria-hidden="true"></div>
+      <p class="eyebrow">A NIGHT AT THE</p>
+      <h1 id="game-title">HOTEL<br>OF HORROR</h1>
+      <p class="tagline">TEN FLOORS. ONE WAY OUT.</p>
+      <div class="title-rule" aria-hidden="true"></div>
+      <div id="title-options" class="menu" aria-label="Title menu"></div>
+      <p class="key-hint">PRESS A KEY - NO ENTER</p>
+    </section>
+
+    <section id="instructions-screen" class="screen-panel hidden" aria-labelledby="instructions-title">
+      <h2 id="instructions-title">HOW TO SURVIVE</h2>
+      <div class="instructions-copy">
+        <p>YOU WAKE ON LEVEL 10. CHOOSE EASY FOR 200 TURNS, MEDIUM FOR 150, OR HARD FOR 100. FIND THE FRONT DOOR ON LEVEL 1 AND ESCAPE.</p>
+        <p>MOVE ALONG EACH HALLWAY, LISTEN AT DOORS, AND SEARCH ROOMS FOR FOOD, KEYS, AND WEAPONS. CREATURES MAY BE WAITING.</p>
+        <p>LOCKED STAIRWELLS BLOCK LEVELS 6 AND 3. USE A KEY, OR BREAK A CLUB TO FORCE ONE OPEN. SAVE A KEY FOR THE FRONT DOOR.</p>
+        <p>ALL ATTACKS CAN MISS. THE GUN IS MORE ACCURATE, AND ITS FIRST SHOT SURPRISES EACH CREATURE SO YOU CAN DODGE PAST SAFELY. EVERY SHOT COSTS A BULLET.</p>
+        <p>DEFEATED CREATURES SOMETIMES DROP FOOD, BULLETS, KEYS, OR STRANGER SUPPLIES. CLOTH CAN BIND A WOUND FOR 1 TO 2 HEALTH. TO THE VICTOR GO THE DUBIOUS SPOILS.</p>
+        <p>OLD MONSTERS REMEMBER OLD FEARS. SOMETIMES UNLIKELY POSSESSIONS BELONG TOGETHER.</p>
+        <p>USE &lt; OR COMMA TO MOVE LEFT, AND &gt; OR PERIOD TO MOVE RIGHT. THE ARROW KEYS ALSO MOVE LEFT AND RIGHT, OR TAKE VISIBLE STAIRS UP AND DOWN.</p>
+        <p>EVERY GAME ACTION COSTS ONE TURN. INVENTORY AND MENU KEYS ARE FREE.</p>
+      </div>
+      <div id="instructions-options" class="menu" aria-label="Instructions menu"></div>
+    </section>
+
+    <section id="play-screen" class="screen-panel play-screen hidden" aria-label="Game screen">
+      <header id="status" class="status" aria-label="Player status"></header>
+      <div id="location" class="location" aria-live="polite"></div>
+      <div id="history" class="history" role="log" aria-live="polite" aria-relevant="additions"></div>
+      <aside id="overlay" class="overlay hidden" aria-live="polite"></aside>
+      <footer id="actions" class="actions" aria-label="Available actions"></footer>
+    </section>
+
+    <section id="gameover-screen" class="screen-panel hidden" aria-labelledby="gameover-title">
+      <p id="gameover-kicker" class="eyebrow"></p>
+      <h2 id="gameover-title"></h2>
+      <p id="gameover-copy" class="gameover-copy"></p>
+      <div id="gameover-options" class="menu" aria-label="Restart menu"></div>
+    </section>
+  </main>
+
+  <noscript>HOTEL OF HORROR REQUIRES JAVASCRIPT TO PLAY.</noscript>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Hotel ZX81 Bitmap Font
+
+This original 5x7 bitmap-style font was created specifically for the Hotel of
+Horror project. It may be used, copied, modified, and redistributed with this
+game without restriction.

@@ -1,0 +1,309 @@
+@font-face {
+  font-family: "Hotel ZX81";
+  src: url("assets/hotel-zx81.ttf") format("truetype");
+  font-display: block;
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  color-scheme: light;
+  --ink: #090909;
+  --paper: #f4f4ed;
+  --dim: #c8c8c1;
+  --pad: clamp(16px, 4vw, 44px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 2vw, 24px);
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, transparent 49.7%, rgba(255,255,255,.035) 50%, transparent 50.3%),
+    #050505;
+  color: var(--ink);
+  font-family: "Hotel ZX81", "Lucida Console", monospace;
+  font-size: clamp(13px, 1.55vw, 18px);
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.machine {
+  position: relative;
+  width: min(920px, 100%);
+  height: min(760px, calc(100vh - 20px));
+  min-height: 520px;
+  overflow: hidden;
+  outline: 0;
+  border: clamp(10px, 2vw, 20px) solid #1a1a1a;
+  border-radius: 5px;
+  background: var(--paper);
+  box-shadow:
+    0 0 0 2px #555,
+    0 18px 70px rgba(255,255,255,.1),
+    inset 0 0 80px rgba(0,0,0,.06);
+}
+
+.machine::after {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  content: "";
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(0,0,0,.025) 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+.screen-panel {
+  height: 100%;
+  padding: var(--pad);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#title-screen,
+#instructions-screen,
+#gameover-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title-rule {
+  width: min(470px, 85%);
+  height: 10px;
+  margin: 22px auto;
+  background: var(--ink);
+  box-shadow: 0 15px 0 var(--ink);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  letter-spacing: .18em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(38px, 8vw, 78px);
+  line-height: 1.03;
+  letter-spacing: .04em;
+}
+
+h2 {
+  margin-bottom: 28px;
+  font-size: clamp(25px, 4vw, 42px);
+  line-height: 1.2;
+}
+
+.tagline {
+  margin-bottom: 0;
+  letter-spacing: .1em;
+}
+
+.menu,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+}
+
+.menu {
+  margin-top: 34px;
+}
+
+.option {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.key {
+  display: inline-block;
+  min-width: 1.65em;
+  margin-right: .45em;
+  padding: 0 .2em;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+}
+
+.key-hint {
+  margin: 32px 0 0;
+  font-size: .78em;
+  letter-spacing: .1em;
+}
+
+.instructions-copy {
+  max-height: 52vh;
+  overflow-y: auto;
+  padding: 0 12px;
+  text-align: left;
+}
+
+.play-screen {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  border-bottom: 8px solid var(--ink);
+  padding-bottom: 12px;
+  text-align: center;
+}
+
+.status strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 1.25em;
+}
+
+.location {
+  padding: 8px 12px;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+}
+
+.history {
+  min-height: 0;
+  overflow-y: auto;
+  scroll-behavior: auto;
+  border: 3px solid var(--ink);
+  padding: 16px 18px;
+  background: rgba(255,255,255,.35);
+}
+
+.message {
+  margin: 0 0 13px;
+}
+
+.message:last-child {
+  margin-bottom: 0;
+}
+
+.message.event::before {
+  content: "> ";
+}
+
+.message.danger {
+  padding: 5px 8px;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.actions {
+  height: calc(4.65em + 35px);
+  min-height: calc(4.65em + 35px);
+  overflow-y: auto;
+  flex-shrink: 0;
+  align-content: center;
+  border-top: 3px solid var(--ink);
+  padding-top: 12px;
+}
+
+.overlay {
+  position: absolute;
+  inset: var(--pad);
+  z-index: 5;
+  overflow-y: auto;
+  border: 8px double var(--ink);
+  padding: clamp(18px, 4vw, 40px);
+  background: var(--paper);
+}
+
+.overlay h2 {
+  padding-bottom: 12px;
+  border-bottom: 5px solid var(--ink);
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 24px;
+}
+
+.weapon-list {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.weapon-list li {
+  margin: 8px 0;
+}
+
+.gameover-copy {
+  max-width: 590px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+noscript {
+  position: fixed;
+  inset: 20px;
+  display: grid;
+  place-items: center;
+  background: white;
+  color: black;
+}
+
+@media (max-width: 620px) {
+  body {
+    padding: 0;
+  }
+
+  .machine {
+    width: 100%;
+    height: 100vh;
+    min-height: 0;
+    border-width: 7px;
+    border-radius: 0;
+  }
+
+  .status {
+    gap: 4px;
+    font-size: .78em;
+  }
+
+  .actions {
+    gap: 7px 14px;
+    font-size: .88em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .history {
+    scroll-behavior: auto;
+  }
+}
