@@ -34,6 +34,7 @@ const testSource = source.replace(
 );
 
 assert.match(styles, /height:\s*calc\(4\.65em \+ 35px\)/, "Action area should reserve three prompt rows");
+assert.match(styles, /\.message\.previous\s*\{[^}]*opacity:\s*\.32/s, "Previous narrative should be visibly faded");
 
 class ClassList {
   constructor() { this.values = new Set(); }
@@ -77,6 +78,20 @@ function boot() {
     arrangeTorchTest: () => window.HotelOfHorror.arrangeTorchTest(),
     arrangeClothTest: () => window.HotelOfHorror.arrangeClothTest()
   };
+}
+
+{
+  const game = boot();
+  game.press("m");
+  assert.doesNotMatch(game.elements.get("history").innerHTML, /\bprevious\b/);
+  game.press("i");
+  game.press("i");
+  game.press("r");
+  assert.doesNotMatch(game.elements.get("history").innerHTML, /\bprevious\b/);
+  game.press("1");
+  const history = game.elements.get("history").innerHTML;
+  assert.match(history, /class="message [^"]*previous"/);
+  assert.match(history, /class="message event">You ready the Fists\.<\/p>/);
 }
 
 {

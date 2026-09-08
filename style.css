@@ -206,6 +206,12 @@ h2 {
 
 .message {
   margin: 0 0 13px;
+  color: var(--ink);
+  opacity: 1;
+}
+
+.message.previous {
+  opacity: .32;
 }
 
 .message:last-child {

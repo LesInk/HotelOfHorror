@@ -8,10 +8,10 @@
     "Hard": 100
   };
   const LOCKED_STAIR_LEVELS = [3, 6];
-  const WEAPON_ORDER = ["Fists", "Bat", "Club", "Torch", "Wooden Stake", "Knife", "Gun", "Silver Sword"];
+  const WEAPON_ORDER = ["Fists", "Fork", "Club", "Torch", "Wooden Stake", "Knife", "Gun", "Silver Sword"];
   const WEAPONS = {
     "Fists": { accuracy: 0.50, min: 1, max: 1 },
-    "Bat": { accuracy: 0.50, min: 1, max: 2 },
+    "Fork": { accuracy: 0.50, min: 1, max: 2 },
     "Club": { accuracy: 0.50, min: 1, max: 3 },
     "Torch": { accuracy: 0.50, min: 1, max: 3 },
     "Wooden Stake": { accuracy: 0.50, min: 1, max: 1 },
@@ -96,6 +96,7 @@
       foundFirstWeapon: false,
       activeEnemy: null,
       history: [],
+      messageBatch: 0,
       ending: null
     };
   }
@@ -168,7 +169,7 @@
     }
 
     const commonWeapons = shuffle([
-      "Bat", "Bat", "Bat",
+      "Fork", "Fork", "Fork",
       "Club", "Club", "Club",
       "Wooden Stake", "Wooden Stake",
       "Knife", "Knife"
@@ -233,7 +234,7 @@
     const rooms = Object.values(hotel.rooms);
     const loot = rooms.filter(function (room) { return room.loot; }).map(function (room) { return room.loot; });
     const common = loot.filter(function (item) {
-      return item.type === "weapon" && ["Bat", "Club", "Wooden Stake", "Knife"].includes(item.name);
+      return item.type === "weapon" && ["Fork", "Club", "Wooden Stake", "Knife"].includes(item.name);
     });
     const ordinary = rooms.filter(function (room) { return room.enemy; });
     const specials = Object.entries(hotel.specials);
@@ -297,8 +298,12 @@
   }
 
   function addMessage(text, tone) {
-    state.history.push({ text: text, tone: tone || "event" });
+    state.history.push({ text: text, tone: tone || "event", batch: state.messageBatch });
     if (state.history.length > 250) state.history.shift();
+  }
+
+  function beginActionMessages() {
+    state.messageBatch += 1;
   }
 
   function arriveAtLocation(initial) {
@@ -749,6 +754,7 @@
     const choices = ownedWeapons();
     if (index < 0 || index >= choices.length) return;
     const enemy = getActiveEnemy();
+    beginActionMessages();
     state.readied = choices[index];
     state.mode = "playing";
     spendTurn();
@@ -827,6 +833,7 @@
   function handlePlayingKey(key) {
     const valid = new Set(optionsForCurrentState().map(function (option) { return option[0]; }));
     if (!valid.has(key)) return;
+    if (key !== "I" && key !== "R") beginActionMessages();
     const inCombat = Boolean(getActiveEnemy());
     if (key === "<") moveHorizontal(-1, inCombat);
     else if (key === ">") moveHorizontal(1, inCombat);
@@ -927,7 +934,8 @@
     ui.location.textContent = labels.join(" / ");
 
     ui.history.innerHTML = state.history.map(function (message) {
-      return '<p class="message ' + message.tone + '">' + escapeHtml(message.text) + '</p>';
+      const ageClass = message.batch < state.messageBatch ? " previous" : "";
+      return '<p class="message ' + message.tone + ageClass + '">' + escapeHtml(message.text) + '</p>';
     }).join("");
     scrollHistoryToBottom();
 
@@ -999,7 +1007,7 @@
       bulletCaches: rooms.filter(function (room) { return room.loot && room.loot.type === "bullets"; }).length,
       keyCaches: rooms.filter(function (room) { return room.loot && room.loot.type === "key"; }).length,
       commonWeapons: rooms.filter(function (room) {
-        return room.loot && room.loot.type === "weapon" && ["Bat", "Club", "Wooden Stake", "Knife"].includes(room.loot.name);
+        return room.loot && room.loot.type === "weapon" && ["Fork", "Club", "Wooden Stake", "Knife"].includes(room.loot.name);
       }).length,
       specials: Object.keys(state.hotel.specials).length,
       availableKeys: optionsForCurrentState().map(function (option) { return option[0]; })

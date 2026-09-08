@@ -34,7 +34,7 @@ const keyOf = (level, position) => level + ":" + position;
 
 const WEAPONS = {
   "Fists": { accuracy: 0.50, min: 1, max: 1 },
-  "Bat": { accuracy: 0.50, min: 1, max: 2 },
+  "Fork": { accuracy: 0.50, min: 1, max: 2 },
   "Club": { accuracy: 0.50, min: 1, max: 3 },
   "Torch": { accuracy: 0.50, min: 1, max: 3 },
   "Wooden Stake": { accuracy: 0.50, min: 1, max: 1 },
@@ -94,7 +94,7 @@ function generateWorld() {
   }
   for (let level = 2; level <= 10; level += 1) world.downstairs[level] = randomInt(1, 10);
 
-  const common = shuffle(["Bat", "Bat", "Bat", "Club", "Club", "Club", "Wooden Stake", "Wooden Stake", "Knife", "Knife"]);
+  const common = shuffle(["Fork", "Fork", "Fork", "Club", "Club", "Club", "Wooden Stake", "Wooden Stake", "Knife", "Knife"]);
   for (let level = 1; level <= 10; level += 1) placeLoot(world, { type: "weapon", name: common[level - 1] }, [level]);
   placeLoot(world, { type: "weapon", name: "Gun" }, [3,4,5,6,7,8,9,10]);
   placeLoot(world, { type: "weapon", name: "Silver Sword" }, [1,2,3,4,5]);
