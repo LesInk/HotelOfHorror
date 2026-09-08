@@ -78,8 +78,9 @@ CODE ORGANIZATION
   game.js
       Contains all browser game logic: procedural hotel generation, state,
       movement, searching, loot, inventory, combat, special-monster rules,
-      keyboard input, narrative history, and rendering. It has no external
-      JavaScript dependencies.
+      keyboard input, narrative history, and rendering. Its expanded search
+      narration includes 62 room-search scenes and 62 empty-room results. It
+      has no external JavaScript dependencies.
 
   PLAN.md
       Records the agreed design and detailed gameplay rules.

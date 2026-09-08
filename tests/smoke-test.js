@@ -185,6 +185,8 @@ for (let run = 0; run < 100; run += 1) {
   assert.equal(generated.bulletCaches, 5);
   assert.equal(generated.keyCaches, 3);
   assert.equal(generated.commonWeapons, 10);
+  assert.equal(generated.searchSceneCount, 62);
+  assert.equal(generated.emptyRoomResultCount, 62);
   assert.equal(generated.specials, 3);
   assert.equal(generated.health, 10);
   assert.equal(generated.difficulty, "Medium");

@@ -47,6 +47,7 @@ The exact file split can change if a single self-contained HTML file would bette
 - Opening Inventory or the Ready menu does not begin a new narrative batch because those overlays do not themselves add story text.
 - Always pin the history to its absolute bottom as messages arrive, fonts finish loading, or the viewport changes.
 - Vary room-search and empty-room descriptions to keep exploration playful and surprising.
+- Maintain at least 62 room-search scene descriptions and 62 empty-room result descriptions so repeated games retain narrative variety.
 - Keep game state and rendering separate enough that the rules remain easy to test and adjust.
 - Keep the game silent, with no sound effects, music, or browser audio handling.
 
