@@ -1,6 +1,37 @@
 HOTEL OF HORROR
 ===============
 
+WARNING: Spoilers Follow. Play the Game First at https://lesink.com/hotelofhorror
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Hotel of Horror is a keyboard-only, turn-based horror game inspired by games
 written for the Sinclair ZX81. It runs entirely inside a web browser from local
 files. No web server, package installation, or Node.js runtime is required to

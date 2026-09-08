@@ -30,6 +30,8 @@ HotelOfHorror/
 
 The exact file split can change if a single self-contained HTML file would better suit the final game.
 
+`README.txt` must be reviewed and updated whenever the game changes so its gameplay summary, code-organization notes, testing instructions, and simulation documentation remain accurate.
+
 ## Technical Direction
 
 - Use plain JavaScript with no external runtime or framework.
