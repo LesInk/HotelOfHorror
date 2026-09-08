@@ -1,6 +1,19 @@
 HOTEL OF HORROR
 ===============
 
+Hotel of Horror is a keyboard-only, turn-based horror game inspired by games
+written for the Sinclair ZX81. It runs entirely inside a web browser from local
+files. No web server, package installation, or Node.js runtime is required to
+play.
+
+
+THE GAME
+--------
+
+You wake on the tenth floor of a ten-level hotel with no memory of how you got
+there. Your goal is to descend through the hotel, find the locked Front Door on
+level 1, and escape before Death's turn counter reaches zero.
+
 WARNING: Spoilers Follow. Play the Game First at https://lesink.com/hotelofhorror
 
 
@@ -31,19 +44,6 @@ WARNING: Spoilers Follow. Play the Game First at https://lesink.com/hotelofhorro
 
 
 
-
-Hotel of Horror is a keyboard-only, turn-based horror game inspired by games
-written for the Sinclair ZX81. It runs entirely inside a web browser from local
-files. No web server, package installation, or Node.js runtime is required to
-play.
-
-
-THE GAME
---------
-
-You wake on the tenth floor of a ten-level hotel with no memory of how you got
-there. Your goal is to descend through the hotel, find the locked Front Door on
-level 1, and escape before Death's turn counter reaches zero.
 
 Each floor has ten room positions. Search rooms for keys, food, ammunition,
 weapons, and stranger supplies while dealing with Zombies, Skeletons, and three
